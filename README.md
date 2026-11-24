@@ -4,7 +4,7 @@
 
 ## 安装和使用
 
-在终端将本仓库克隆到个人技能目录。Git 会创建末级目录，仓库根部就是技能入口。
+把 `pelican-era-skills` 克隆到个人技能目录下的 `pelican-era-film` 文件夹，即可用 `$pelican-era-film` 调用。
 
 ```sh
 git clone https://github.com/Kiki2018888/pelican-era-skills.git "$HOME/.agents/skills/pelican-era-film"

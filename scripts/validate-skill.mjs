@@ -43,7 +43,12 @@ if (name && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name)) {
   fail(`name 不符合小写字母、数字、单个连字符: ${name}`);
 }
 if (name && (name.length < 1 || name.length > 64)) fail('name 长度必须在 1 到 64');
-if (name && name !== dirName && !(name === 'pelican-era-film' && dirName === 'pelican-era-film')) fail(`name (${name}) 与目录名 (${dirName}) 不一致`);
+const sourceCheckout = name === 'pelican-era-film' && dirName === 'pelican-era-skills' &&
+  path.basename(path.dirname(skillRoot)) !== 'skills' && fs.existsSync(path.join(skillRoot, '.git'));
+const authoringCopy = name === 'pelican-era-film' && dirName === 'pelican-era-film';
+if (name && name !== dirName && !sourceCheckout && !authoringCopy) {
+  fail(`name (${name}) 与目录名 (${dirName}) 不一致`);
+}
 if (description && [...description].length > 1024) fail(`description 超过 1024: ${[...description].length}`);
 if (compatibility && [...compatibility].length > 500) {
   fail(`compatibility 超过 500: ${[...compatibility].length}`);
