@@ -42,7 +42,7 @@ mkdir -p .agents/skills
 git clone https://github.com/Kiki2018888/pelican-era-skills.git .agents/skills/pelican-era-film
 ```
 
-把解压后的 `pelican-era-film` 目录放进去，不要多套一层同名目录。正确结果是目录里直接能看到 `SKILL.md`。
+若从 GitHub 下载 ZIP，把解压所得的顶层目录重命名为 `pelican-era-film` 后放进技能目录。正确结果是目录里直接能看到 `SKILL.md`。
 
 Codex 会自动发现变更。列表里没有它时，重开 Codex。
 
