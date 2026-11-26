@@ -43,9 +43,9 @@ if (name && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name)) {
   fail(`name 不符合小写字母、数字、单个连字符: ${name}`);
 }
 if (name && (name.length < 1 || name.length > 64)) fail('name 长度必须在 1 到 64');
-const sourceCheckout = name === 'pelican-era-film' && dirName === 'pelican-era-skills' &&
-  path.basename(path.dirname(skillRoot)) !== 'skills' && fs.existsSync(path.join(skillRoot, '.git'));
-const authoringCopy = name === 'pelican-era-film' && dirName === 'pelican-era-film';
+const installed = path.basename(path.dirname(skillRoot)) === 'skills';
+const sourceCheckout = !installed && dirName === 'pelican-era-skills' && fs.existsSync(path.join(skillRoot, '.git'));
+const authoringCopy = !installed && dirName.replace(/^\d+-/, '') === name;
 if (name && name !== dirName && !sourceCheckout && !authoringCopy) {
   fail(`name (${name}) 与目录名 (${dirName}) 不一致`);
 }
@@ -125,4 +125,4 @@ if (errors.length) {
   for (const err of errors) console.error(`- ${err}`);
   process.exit(1);
 }
-console.log(`[validate-skill] 通过 ${dirName} @ ${pin.commit.slice(0, 12)} description=${[...description].length} 字`);
+console.log(`[validate-skill] 通过 ${name} @ ${pin.commit.slice(0, 12)} description=${[...description].length} 字`);

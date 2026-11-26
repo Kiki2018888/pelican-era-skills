@@ -1,6 +1,6 @@
 # 鹈鹕时代技能
 
-鹈鹕时代技能可以作为 Codex 技能独立安装。给 Agent 一段动作和一个画风名，它会编写角色、道具和时间轴，再按选定的画法绘制。用同一段动作比较多种画风时，可以暂停在同一帧切换。[在线大画面演示 · 机器人打羽毛球](https://kiki2018888.github.io/pelican-era-skills/)
+鹈鹕时代技能可以在 Codex 中独立安装，用 20 种时代画风制作动画。给 Agent 一段动作和一个画风名，它会编写角色、道具和时间轴，再按选定的画法绘制。用同一段动作比较多种画风时，可以暂停在同一帧切换。[在线大画面演示 · 机器人打羽毛球](https://kiki2018888.github.io/pelican-era-skills/)
 
 ## 安装和使用
 
@@ -10,7 +10,7 @@
 git clone https://github.com/Kiki2018888/pelican-era-skills.git "$HOME/.agents/skills/pelican-era-film"
 ```
 
-在 Codex 中可以这样调用。
+更新已有安装时，先确认安装目录名为 `pelican-era-film`，目录内直接包含 `SKILL.md`。在 Codex 中可以这样调用。
 
 > 用 $pelican-era-film 做一段纸船松绳过桥的动画。先用浮世绘，再用唐代白描，让我停在同一帧切换两种画风。
 

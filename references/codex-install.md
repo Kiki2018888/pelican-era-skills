@@ -1,4 +1,4 @@
-# 安装到 Codex
+# 在 Codex 中安装鹈鹕时代技能
 
 下列路径用于 Codex。DeepSeek Harness 的安装方式尚未验证。
 
@@ -75,6 +75,6 @@ enabled = false
 ## 这份包不做什么
 
 - 不修改 orbitoo/pelican-test，也不替用户开上游 pull request。
-- 不在用户电脑上自动复制技能。上面的 `cp` 只有用户明确要求安装时才执行。
+- 不在用户电脑上自动复制技能。文中的安装命令由用户在选定的目录中运行。
 - 不发送外部消息，不创建插件上架。
 - 未在 DeepSeek Harness 上安装或运行。目录布局遵循 Agent Skills 通用结构，方便以后改写安装说明，这不是兼容性测试结果。
