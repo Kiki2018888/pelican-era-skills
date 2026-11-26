@@ -4,7 +4,7 @@
 
 鹈鹕时代技能包含工作流脚本及 [机器人羽毛球展示页](../assets/showcase.html)。页面内嵌了固定提交中改编的材质绘制函数与双骨骼求解器，附有 Elbert 的 MIT 全文、上游第三方声明和技能包的 MIT 全文。其余双人球局绘制、比赛动作、击球声及交互播放器由 Science Motion Skills 为本次改编制作，采用 MIT 许可。展示页用浏览器原生 Canvas、Web Audio 与系统字体。
 
-用户用 `scripts/fetch-upstream.sh` 取得的原影片工程，须连同其 `LICENSE`、`THIRD_PARTY_NOTICES.md` 及随所分发字体或库要求提供的许可证一起保留。[上游源头](https://github.com/orbitoo/pelican-test) · [固定版本](https://github.com/orbitoo/pelican-test/tree/59c8ca2657ce5b2cf067969b5bda19d6609af8ac)
+再分发通过 `scripts/fetch-upstream.sh` 获取的原影片工程时，请一并保留 `LICENSE`、`THIRD_PARTY_NOTICES.md` 及所分发字体或库要求附带的许可。[上游源头](https://github.com/orbitoo/pelican-test) · [固定版本](https://github.com/orbitoo/pelican-test/tree/59c8ca2657ce5b2cf067969b5bda19d6609af8ac)
 
 本页对应的上游提交为 `59c8ca2657ce5b2cf067969b5bda19d6609af8ac`。
 
@@ -48,7 +48,7 @@ SOFTWARE.
 | p5.brush 3.0.0 | `public/vendor/p5.brush.js`；`package.json` 依赖 `^3.0.0` | MIT，Copyright (c) 2023-2026 Alejandro Campos Uribe | 对照 <https://github.com/acamposuribe/p5.brush/blob/main/LICENSE.md> 与 npm 包 `p5.brush@3.0.0` 的 MIT 声明。压缩包开头没有许可证横幅。 |
 | simplex-noise | 由 p5.brush 传递依赖；压缩包前部含内联二维单纯形噪声实现 | MIT，Copyright (c) Jonas Wagner | 仅依上游 `THIRD_PARTY_NOTICES.md` 与压缩包形态，未对 jwagner/simplex-noise 做逐字节比对。 |
 | puppeteer-core ^24 | 仅开发依赖，不打进页面 | Apache-2.0 | 依上游声明与 npm 包许可。本技能的截帧脚本不调用它。 |
-| FFmpeg | 系统命令，`tools/encode.sh` 才会调用 | LGPL 或 GPL，取决于构建选项 | 未捆绑。许可信息见所用 FFmpeg 发行版的说明。 |
+| FFmpeg | 系统命令，`tools/encode.sh` 才会调用 | LGPL 或 GPL，取决于构建选项 | FFmpeg 单独安装。许可信息请查阅所用发行版的说明。 |
 
 分发含 `p5.min.js` 的作品时，同时附上 LGPL-2.1 全文，并保留上述版权声明。p5.js 是库；影片应用代码通过脚本标签调用它。本技能不把影片代码解释成 p5.js 的修改版。
 

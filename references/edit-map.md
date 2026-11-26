@@ -8,7 +8,7 @@
 
 不改 `src/`。用固定提交检出影片，打开播放器或对 `render.html` 调用 `renderFrameAt(t)`。
 
-适合：用户要看某一时代、某一秒，或导出一段未改过的画面。
+可以用这个入口查看某一场、定位到指定秒数，或导出原片片段。
 
 时间：
 
@@ -36,7 +36,7 @@ B 类改动仍然画的是这只鹈鹕和这辆自行车。它不是换题材。
 
 ## C. 需要重写的部分
 
-下面任何一项都要明确告诉用户：只影响你改到的场，其余 19 场不会跟着变成新故事。
+每个分场都有自己的场景代码。要让新角色出现在多个分场，需要逐场改写造型和动作。
 
 - 换物种、换交通工具、换情节：重写该场 `render()` 里的造型。每场的鸟和车都是按媒介重画的，不是共享网格套材质。
 - 改骑行姿态、踏板、轮辐相位：`src/rig/pelican.js` 的 `computePelicanRig`。`poseMode` 含 `normal`、`egypt_freeze`、`bada_eye`、`jump`、`lissajous`。这是鹈鹕加自行车的解析 IK，不是通用角色骨架。
@@ -53,6 +53,6 @@ B 类改动仍然画的是这只鹈鹕和这辆自行车。它不是换题材。
 
 - `serve`、`shot`、`sheet`、`render`、`encode`、`cover`、`build`
 
-`tools/shot.mjs` 只连接已经开着的 Chrome 调试端口（默认 `http://127.0.0.1:19222`），自己不启动浏览器，也不关闭用户的浏览器。`tools/render.mjs` 导出的是全片约 8220 帧。用户没有明确要求全片之前，不要跑 `render`、`encode`、`cover` 或 `build`。
+`tools/shot.mjs` 只连接已经开着的 Chrome 调试端口（默认 `http://127.0.0.1:19222`），自己不启动浏览器，也不关闭用户的浏览器。`tools/render.mjs` 导出的是全片约 8220 帧。预览单个分场时，使用下面的短片段导出命令即可。
 
-预览和短截帧用本技能的 `scripts/preview-server.mjs` 与 `scripts/capture-frames.mjs`。这两个脚本不执行 `pnpm install`。截帧需要 Chrome，以及可选的 FFmpeg。
+预览和短截帧用本技能的 `scripts/preview-server.mjs` 与 `scripts/capture-frames.mjs`。这两个脚本不执行 `pnpm install`。截帧需要 Chrome 或 Chromium。安装 FFmpeg 后还能将帧序列编码为 MP4。

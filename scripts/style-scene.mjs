@@ -9,11 +9,11 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
 const args = process.argv.slice(2),
   command = args.shift();
-const help = `用法
+const help = `鹈鹕时代技能 · 制作离线动画
   node scripts/style-scene.mjs list
   node scripts/style-scene.mjs rules 唐代白描
   node scripts/style-scene.mjs build --scene 动作.js --style 唐代白描 [--style 爪哇皮影] --out 预览.html
-  --style all 会将二十种画法全部加入同一张展示页。`;
+  用 --style all 可在同一段动画中切换全部 20 种画风。用浏览器打开 --out 指定的 HTML 即可播放。`;
 const escape = (s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 const script = (s) => s.replace(/<\/script/gi, '<\\/script');
 function build() {

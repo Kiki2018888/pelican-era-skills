@@ -1,6 +1,6 @@
 interface:
   display_name: "鹈鹕时代技能"
-  short_description: "把新的动作脚本按指定时代画法绘制成动画，支持同帧换画风与离线导出"
-  default_prompt: "用 $pelican-era-film 按我指定的画风绘制这段动作，生成可播放的动画。"
+  short_description: "用 20 种时代画风制作动画，可暂停在同一帧切换画风，导出 HTML、PNG 或静音 MP4"
+  default_prompt: "用 $pelican-era-film 画一只松鼠推窗、放下松果的动画，让我在唐代白描和浮世绘之间切换。"
 policy:
   allow_implicit_invocation: true

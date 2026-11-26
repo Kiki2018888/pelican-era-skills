@@ -1,10 +1,10 @@
 # 从动作写成画面
 
-用户给一段自然语言和一个画风名即可。由 Agent 把文字编成一个场景 JS，再把规则应用到画面。创作阶段可完全离线。从技能根目录执行下列命令，场景文件、输出文件可放在自己的项目中。
+用一句话描述动作，再选一种画风。可以请 Codex 编写场景 JS，也可以从纸船和印章示例开始修改。创作阶段可完全离线。从技能根目录执行下列命令，场景文件、输出文件可放在自己的项目中。
 
 ## 从文字到新主体
 
-例如用户说「纸船松绳后穿过桥洞，浮世绘」。先写出三个可观察的时刻：松绳前绳端与船头重合、船在桥墩后局部被遮住、船从桥的另一侧出现。固定船头系绳点、船体折线、桥洞的轮廓和前后层级。这些属于动作。其次读浮世绘规则，把纸面分成几块独立色版，折线交给木刻主版，水面用渐层。几何是新画的船、桥和绳，画材来自木版分场。[完整场景源码](../examples/paper-boat.js)
+以「纸船松绳后穿过桥洞，浮世绘」为例。先写出三个可观察的时刻：松绳前绳端与船头重合、船在桥墩后局部被遮住、船从桥的另一侧出现。固定船头系绳点、船体折线、桥洞的轮廓和前后层级。这些属于动作。其次读浮世绘规则，把纸面分成几块独立色版，折线交给木刻主版，水面用渐层。几何是新画的船、桥和绳，画材来自木版分场。[完整场景源码](../examples/paper-boat.js)
 
 1. 逐句标出主体、受力部分、道具、前后关系、镜头变化、接触/释放和终态。按剧本选时长与画幅。省略的细节可由 Agent 作可逆的创作决定。
 2. 运行 `node scripts/style-scene.mjs rules "画风名"`。把返回的「造型、画材、空间、运动、验收」分别写进本镜头的实际画法。比如「皮影」要让可动片围绕铰点转，「白描」要给软轮廓和刚性结构分配不同线法。
@@ -57,7 +57,7 @@ node scripts/capture-frames.mjs --html boat.html --clip-start 0 --clip-seconds 9
 
 HTML 默认用第一种画风；暂停后切换下拉菜单会保留时间。可直接从这张 HTML 中导出任一种已打包的画风，例如 `node scripts/capture-frames.mjs --html boat.html --style 唐代白描 --times 1.65 --out tang`。省略 `--style` 时导出第一种。浏览器控制 `__seek(t)` 可暂停定位；`setSceneStyle('s11_ukiyoe')` 可在已打包的画风间切换；`captureFrameAt(t)` 返回画布 PNG 的 Base64；`__dur` 是秒数。后缀 `?capture=1` 打开后停在首帧。`?style=s11_ukiyoe` 可指定首选画风。
 
-导出 PNG 需要 Node.js 22+ 与Chrome/Chromium；MP4 另需 FFmpeg。Chrome 可用 `--chrome` 或 `CHROME_BIN` 指定，FFmpeg 可用 `FFMPEG_BIN` 指定。MP4 与帧序列在指定输出目录内，文件名为 `clip.mp4`、`clip-frames/`。输出画幅跟随场景。渲染默认为无声。
+导出 PNG 需要 Node.js 22+ 和 Chrome 或 Chromium。导出静音 MP4 还需 FFmpeg。Chrome 可用 `--chrome` 或 `CHROME_BIN` 指定，FFmpeg 可用 `FFMPEG_BIN` 指定。MP4 与帧序列在指定输出目录内，文件名为 `clip.mp4`、`clip-frames/`。输出画幅跟随场景。渲染默认为无声。
 
 ## 验证
 

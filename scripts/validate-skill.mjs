@@ -102,7 +102,7 @@ function walk(dir) {
       const text = fs.readFileSync(full, 'utf8');
       const localMarkers = ['/opt/' + 'cursor', '/' + 'agent/'];
       if (localMarkers.some((marker) => text.includes(marker))) {
-        fail(`${path.relative(skillRoot, full)} 含有固定的开发环境路径`);
+        fail(`${path.relative(skillRoot, full)} 包含固定的开发环境路径，请改用相对路径或命令参数`);
       }
     }
   }

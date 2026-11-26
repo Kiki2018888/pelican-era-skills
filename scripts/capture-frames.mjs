@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 用 Chrome 对 render.html 调用 renderFrameAt(t)。
+// 使用 Chrome 或 Chromium 截取指定时刻的画面。
 // 只启动并关闭自己拉起的浏览器进程。不运行 pnpm install，不调用上游 tools/shot.mjs。
 import { spawn, execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -30,7 +30,7 @@ function usage() {
       [--sheet contact.png] [--allow-diverged]
 
 --times 的单位是秒，可重复同一时刻以检查字节是否稳定。
---clip-start 额外导出一段静音 PNG 序列，检测到 FFmpeg 后封装为 MP4。
+--clip-start 会导出 PNG 帧序列。安装 FFmpeg 后，还会生成静音视频 clip.mp4。
 默认要求 git HEAD 等于技能 pin。工作区有未提交修改时仍会截帧，并在日志里写明。
 --allow-diverged 允许 HEAD 不是 pin。`);
 }

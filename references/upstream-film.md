@@ -17,10 +17,10 @@
 1. 在自己创建的新工作目录中操作。运行 `scripts/fetch-upstream.sh <目录>`。目录非空就停，不要删除里面的文件。脚本只检出 pin 里的提交，不运行 `pnpm install` 或上游 `tools/`。
 2. 核对 `<目录>` 的 `git rev-parse HEAD` 等于 `59c8ca2657ce5b2cf067969b5bda19d6609af8ac`，并确认 `LICENSE` 与 `THIRD_PARTY_NOTICES.md` 还在。许可边界见 [署名](notices.md)。
 3. 按类别改文件。B 类先在场景文件里搜索 `scene.palette`；很多颜料写在该场自己的常量表里。改完用 `node --check` 检查改过的 `.js`。
-4. 预览：`node scripts/preview-server.mjs --root <目录> --port 41731`，打开打印出的地址。播放器是 `/`，离屏宿主是 `/render.html`。不要改用上游 `pnpm serve`，除非用户读过 `tools/serve.mjs` 并明确要求。
-5. 截帧：`node scripts/capture-frames.mjs --project <目录> --times <中点秒> --out <输出目录>`。需要 Chrome 或 Chromium。脚本会自己启动一个独立的 headless 进程，结束时只关掉这个进程。它不连接、不关闭用户已经开着的浏览器。1920×1080 画面是滑轨镜头：一场的中点通常仍能看到左右邻框，这不是截错时刻。
-6. 在同一次截帧进程里把同一时刻放进 `--times` 两次。比较这两张 PNG，检查相同时刻的画面是否一致。不同浏览器进程的字体和图形环境也会影响像素。
-7. 短导出加上 `--clip-start <秒> --clip-seconds 4 --fps 8`。片段最长 8 秒，且没有音轨。用户没有明确要求之前，不要跑全片 `tools/render.mjs`（约 8220 帧）或 `tools/encode.sh`。
+4. 预览：`node scripts/preview-server.mjs --root <目录> --port 41731`。播放器是 `/`，离屏宿主是 `/render.html`。预览服务器会打印可打开的地址。若选择上游的 `pnpm serve`，先阅读它所执行的 `tools/serve.mjs`。
+5. 截帧：`node scripts/capture-frames.mjs --project <目录> --times <中点秒> --out <输出目录>`。截帧需要 Chrome 或 Chromium。脚本会打开独立的无界面浏览器，导出后自动关闭这个进程。1920×1080 画面是滑轨镜头：一场的中点通常仍能看到左右邻框，这不是截错时刻。
+6. 在同一次截帧进程里把同一时刻放进 `--times` 两次。比较两张 PNG，检查重复定位是否得到同一帧。跨浏览器进程比较时，字体和图形渲染环境也会影响像素。
+7. 短导出加上 `--clip-start <秒> --clip-seconds 4 --fps 8`。片段最长 8 秒，且没有音轨。只在需要完整影片时使用上游 `tools/render.mjs` 和 `tools/encode.sh`，全片约有 8220 帧。
 
 第 `n` 场中点是 `5 + (n - 1) * 6 + 3`。跨框时刻是 `5 + 6 * k`。
 
